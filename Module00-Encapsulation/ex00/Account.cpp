@@ -4,6 +4,10 @@ Account::Account(): _id(0), _value(0) {
     std::cout << "Account default constructor called" << std::endl;
 }
 
+Account::Account(unsigned int id): _id(id), _value(0) {
+    std::cout << "Account parameter(unsigned int) constructor called" << std::endl;
+}
+
 Account::~Account(){
     std::cout << "Account destructor called" << std::endl;
 }
@@ -16,11 +20,11 @@ void Account::setValue(unsigned int value) {
     _value = value;
 }
 
-const unsigned int &Account::getId(void) {
+const unsigned int &Account::getId(void) const {
     return (_id);
 }
 
-const unsigned int &Account::getValue(void) {
+const unsigned int &Account::getValue(void) const {
     return (_value);
 }
 

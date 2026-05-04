@@ -7,18 +7,20 @@
 int main()
 {
 	try {
-		Account accountA = Account();
-		// accountA.id = 0;
-		// accountA.value = 100;
+		Account accountA = Account(0);
+		
+		accountA.setValue(100);
 	
-		// Account accountB = Account();
-		// accountB.id = 1;
-		// accountB.value = 100;
+		Account accountB = Account(1);
+		
+		accountB.setValue(100);
 	
-		 Bank bank = Bank();
+		 Bank bank = Bank(999);
 		// bank.liquidity = 999;
 		// bank.clientAccounts.push_back(&accountA);
+		bank.setClient(accountA);
 		// bank.clientAccounts.push_back(&accountB);
+		bank.setClient(accountB);
 	
 		// bank.liquidity -= 200;
 		// accountA.value += 400;
@@ -28,12 +30,11 @@ int main()
 		// std::cout << accountB << std::endl;
 	
 		std::cout << " ----- " << std::endl;
-	
 		std::cout << "Bank : " << std::endl;
 		std::cout << bank << std::endl;
 	}
 	catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Error: "  << e.what() << std::endl;
 	}
 	return (0);
 }

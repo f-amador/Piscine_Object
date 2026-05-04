@@ -1,6 +1,6 @@
-NAME=ex00
+NAME=bank
 CXX=c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS= -Wall -Wextra -Werror -g -std=c++98
 SRC=main.cpp Account.cpp Bank.cpp
 OBJ=$(SRC:.cpp=.o)
 
