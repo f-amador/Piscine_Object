@@ -9,25 +9,25 @@
 
 class Bank {
     private:
-        unsigned int _liquidity;
+        float _liquidity;
         std::vector<Account> _clientAccounts;
         
     public:
     //  Constructors
         Bank();
-        Bank(unsigned int);
+        Bank(float);
         ~Bank();
 
     //  Member Functions
     
-    
+        void transfer(const Account &src, const Account &dest, float ammount);
     //  Setters
-        void setLiquidity(unsigned int);
+        void setLiquidity(float);
         void setClient(const Account &);
     
     //  Getters
-        const unsigned int &getLiquidity();
-        const Account &getClient();
+        const float &getLiquidity();
+        const std::vector<Account> &getClients();
 
     //  Exception
         class DuplicateIdException : public std::exception {
@@ -35,8 +35,15 @@ class Bank {
                 virtual const char * what() const throw();
         };
 
+        class NegativeValue : public std::exception {
+            public:
+                virtual const char * what() const throw();
+        };
+        const Account &operator[](float);
+
+    
     //  Friends
-        friend std::ostream& operator << (std::ostream& , const Bank& );
-};
+        friend std::ostream &operator<<(std::ostream& , const Bank& );
+    };
 
 #endif

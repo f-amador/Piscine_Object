@@ -4,16 +4,18 @@
 #include "Account.hpp"
 #include "Bank.hpp"
 
-int main()
+int main(int ac, char *av[])
 {
+	(void)ac;
+	(void)av;
 	try {
 		Account accountA = Account(0);
 		
-		accountA.setValue(100);
+		//accountA.setValue(100);
 	
 		Account accountB = Account(1);
 		
-		accountB.setValue(100);
+		//accountB.setValue(100);
 	
 		 Bank bank = Bank(999);
 		// bank.liquidity = 999;
@@ -31,7 +33,8 @@ int main()
 	
 		std::cout << " ----- " << std::endl;
 		std::cout << "Bank : " << std::endl;
-		std::cout << bank << std::endl;
+		std::cout << bank << "HERE\n\n:" << std::endl;
+		std::cout << bank[10] << std::endl;
 	}
 	catch (std::exception &e){
 		std::cerr << "Error: "  << e.what() << std::endl;

@@ -4,27 +4,27 @@ Account::Account(): _id(0), _value(0) {
     std::cout << "Account default constructor called" << std::endl;
 }
 
-Account::Account(unsigned int id): _id(id), _value(0) {
-    std::cout << "Account parameter(unsigned int) constructor called" << std::endl;
+Account::Account(float id): _id(id), _value(0) {
+    std::cout << "Account parameter(float) constructor called" << std::endl;
 }
 
 Account::~Account(){
     std::cout << "Account destructor called" << std::endl;
 }
 
-void Account::setId(unsigned int id) {
-    _id = id;
-}
+// void Account::setId(float id) {
+//     _id = id;
+// }
 
-void Account::setValue(unsigned int value) {
-    _value = value;
-}
+// void Account::setValue(float value) {
+//     _value = value;
+// }
 
-const unsigned int &Account::getId(void) const {
+const float &Account::getId(void) const {
     return (_id);
 }
 
-const unsigned int &Account::getValue(void) const {
+const float &Account::getValue(void) const {
     return (_value);
 }
 

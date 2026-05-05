@@ -6,26 +6,26 @@
 class Account {
     private:
     //Attributes
-        unsigned int _id;
-        unsigned int _value;
+        float _id;
+        float _value;
 
     //  Setters
-        void setId(unsigned int);
+        //void setId(float);
 
     public:
     //  Constructors    
         Account();
-        Account(unsigned int);
+        Account(float);
         ~Account();
     
     //  Member Functions
     
     //  Setters    
-        void setValue(unsigned int);
+        //void setValue(float);
     
     //Getters
-        const unsigned int &getId(void) const;
-        const unsigned int &getValue(void) const;
+        const float &getId(void) const;
+        const float &getValue(void) const;
 	    friend std::ostream &operator<<(std::ostream& , const Account& );
 };
 
