@@ -5,13 +5,28 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "Account.hpp"
+
 
 class Bank {
+
     private:
+        class Account {
+            private:
+            //Attributes
+                float _id;
+                float _value;
+                public:
+                Account();
+                Account(float);
+                ~Account();
+                //  Constructors    
+            //Getters
+                const float &getId(void) const;
+                const float &getValue(void) const;
+        };
+        
         float _liquidity;
         std::vector<Account> _clientAccounts;
-        
     public:
     //  Constructors
         Bank();
@@ -20,10 +35,10 @@ class Bank {
 
     //  Member Functions
     
-        void transfer(const Account &src, const Account &dest, float ammount);
+        void transfer(float &src, float &dest, float ammount);
     //  Setters
         void setLiquidity(float);
-        void setClient(const Account &);
+        void setClient(int);
     
     //  Getters
         const float &getLiquidity();
@@ -35,15 +50,22 @@ class Bank {
                 virtual const char * what() const throw();
         };
 
-        class NegativeValue : public std::exception {
+        class NegativeValueException : public std::exception {
             public:
                 virtual const char * what() const throw();
         };
-        const Account &operator[](float);
+
+        class NotEnoughBalanceException : public std::exception {
+            public:
+                virtual const char * what() const throw();
+        };
+
+        const float &operator[](float);
 
     
-    //  Friends
-        friend std::ostream &operator<<(std::ostream& , const Bank& );
-    };
+        
+        //  Friends
+            // friend std::ostream &operator<<(std::ostream& , const Bank& );
+        };
 
 #endif
