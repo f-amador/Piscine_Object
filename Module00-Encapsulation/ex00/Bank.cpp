@@ -49,16 +49,16 @@ Bank::~Bank() {
     std::cout << "Bank default destructor called" << std::endl;
 }
 
-//Member Functions 
-void Bank::transfer(float &src, float &dest, float ammount) {
-	if (ammount <= 0) {
-		throw NegativeValueException();
-	}
-	if ((*this)[0] < ammount)
-	{
-		throw NotEnoughBalanceException();
-	}
-}
+// //Member Functions 
+// void Bank::transfer(float &src, float &dest, float ammount) {
+// 	if (ammount <= 0) {
+// 		throw NegativeValueException();
+// 	}
+// 	if ((*this)[0] < ammount)
+// 	{
+// 		throw NotEnoughBalanceException();
+// 	}
+// }
 
 
 // Setters
@@ -93,7 +93,7 @@ const char *Bank::DuplicateIdException::what() const throw() {
 }
 
 const char *Bank::NegativeValueException::what() const throw() {
-	return "Cannot accept Negative value";
+	return "Cannot accept Negative or Zero value";
 }
 
 const char *Bank::NotEnoughBalanceException::what() const throw() {
