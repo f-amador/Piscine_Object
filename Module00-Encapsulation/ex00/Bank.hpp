@@ -23,26 +23,29 @@ class Bank {
             //Getters
                 const float &getId(void) const;
                 const float &getValue(void) const;
+                void setValue(float);
         };
         
         float _liquidity;
         std::vector<Account> _clientAccounts;
+        
+        // Member functions
+        void setLiquidity(float);
+        void setClient(float);
     public:
     //  Constructors
-        Bank();
         Bank(float);
         ~Bank();
 
     //  Member Functions
     
-        void transfer(float &src, float &dest, float ammount);
+        void createAccount(float);
+        void transfer(int src, int dest, float ammount);
     //  Setters
-        void setLiquidity(float);
-        void setClient(int);
-    
     //  Getters
         const float &getLiquidity();
         const std::vector<Account> &getClients();
+        Account &getAccount(int id);
 
     //  Exception
         class DuplicateIdException : public std::exception {
@@ -59,8 +62,13 @@ class Bank {
             public:
                 virtual const char * what() const throw();
         };
+        
+        class AccountDoesNotExistException : public std::exception {
+            public:
+                virtual const char * what() const throw();
+        };
 
-        const float &operator[](float);
+        const float &operator[](int);
 
     
         

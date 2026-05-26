@@ -80,3 +80,21 @@ int main()
 }
 
 ```
+
+## Bank Class
+### Private Attributes
+1. `liquidity : float`
+2. `clientAccounts : std::vector<Account>`
+3. `Account` (nested class definition)
+### Public Methods
+#### Constructors/Destructors
+1. `Bank(float Liquidity)` : Parameterized constructor (receives float to initialize liquidity, throws exception if value is negative or zero)
+2. `~Bank()` : Destructor (cleans up dynamically allocated Account objects)
+#### Getters
+1. `float &getLiquidity() const` : Returns current bank liquidity
+2. `const std::vector<Account*>& getClientAccounts() const` : Returns reference to client accounts vector
+3. `Account* getAccount(int id) const` : Returns pointer to account with given ID (or nullptr if not found)
+#### Setters
+1. `void setLiquidity(float newLiquidity)` : Updates liquidity (validates non-negative)
+2. `void addAccount(Account* account)` : Adds account to bank (with validation)
+3. `void removeAccount(int accountId)` : Removes account by ID

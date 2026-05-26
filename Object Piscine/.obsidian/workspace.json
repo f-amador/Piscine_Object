@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Encapsulation.md",
+                "file": "Module00.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Encapsulation"
+              "title": "Module00"
             }
           }
         ]
@@ -185,9 +185,9 @@
   },
   "active": "66bdea416262832b",
   "lastOpenFiles": [
-    "MAIN.md",
     "Encapsulation.md",
     "Module00.md",
+    "MAIN.md",
     "Module00 - [[Encapsulation.md",
     "Welcome.md"
   ]

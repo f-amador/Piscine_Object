@@ -29,19 +29,22 @@ const float &Bank::Account::getValue(void) const {
     return (_value);
 }
 
+void Bank::Account::setValue(float value)
+{
+	if (value <= 0)
+		throw(NegativeValueException());
+	this->_value += value;
+}
+
 // std::ostream &operator<<(std::ostream &p_os, const Bank::Account p_account) {
 //     p_os << "[" << p_account._id << "] - [" << p_account._value << "]";
 // 	return (p_os);
 // }
 
-// Constructors
-Bank::Bank(): _liquidity(0), _clientAccounts(std::vector<Account>()) {
-    std::cout << "Bank default constructor called" << std::endl;
-}
-
 Bank::Bank(float liquidity): _clientAccounts(std::vector<Account>()) {
 	if (liquidity <= 0)
 		throw NegativeValueException();
+	_liquidity = liquidity;
 	std::cout << "Bank parameter(float) constructor called" << std::endl;
 } 
 
@@ -50,32 +53,38 @@ Bank::~Bank() {
 }
 
 // //Member Functions 
-// void Bank::transfer(float &src, float &dest, float ammount) {
-// 	if (ammount <= 0) {
-// 		throw NegativeValueException();
-// 	}
-// 	if ((*this)[0] < ammount)
-// 	{
-// 		throw NotEnoughBalanceException();
-// 	}
-// }
+void Bank::transfer(int src, int dest, float ammount) {
+	if (ammount <= 0) {
+		throw NegativeValueException();
+	}
+	if ((*this)[src] < ammount)
+	{
+		throw NotEnoughBalanceException();
+	}
+	this->getAccount(src).setValue((*this)[src] - ammount);
+	this->getAccount(dest).setValue(ammount * 0.96);
+	this->setLiquidity(this->getLiquidity() + ammount * 0.04);
+}
 
+
+void Bank::createAccount(float initial_balance)
+{
+	this->setClient(initial_balance);
+	std::cout << "Client "<< _clientAccounts.size() - 1 << " created(" << _clientAccounts.back().getValue() << "$)" << std::endl;
+}
 
 // Setters
 void Bank::setLiquidity(float liquidity) {
     _liquidity = liquidity;
 }
 
-void Bank::setClient(int id)
+void Bank::setClient(float initial_balance)
 {
-	for (std::vector<Account>::const_iterator it = _clientAccounts.begin(); it != _clientAccounts.end(); it ++)
-	{
-		if (id == (*it).getId())
-		{
-			throw DuplicateIdException();
-		}
-	}
-	_clientAccounts.push_back(Bank::Account(id));
+	if (_clientAccounts.size() == 0)
+		_clientAccounts.push_back(Bank::Account(0));
+	else
+		_clientAccounts.push_back(Bank::Account(_clientAccounts.back().getId() + 1));
+	_clientAccounts.back().setValue(initial_balance);
 }
 // Getters
 
@@ -85,6 +94,19 @@ const float &Bank::getLiquidity() {
 
 const std::vector<Bank::Account> &Bank::getClients() {
 	return _clientAccounts;
+}
+
+Bank::Account &Bank::getAccount(int id){
+	try {
+		if ( id < 0)
+			throw NegativeValueException();
+		return (_clientAccounts[id]);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "HERE";
+		throw e.what();
+	}
 }
 
 //Exceptions
@@ -97,7 +119,11 @@ const char *Bank::NegativeValueException::what() const throw() {
 }
 
 const char *Bank::NotEnoughBalanceException::what() const throw() {
-	return "Insuficient ";
+	return "Insuficient balance";
+}
+
+const char *Bank::AccountDoesNotExistException::what() const throw() {
+	return "Account with that id doesn not exist";
 }
 
 // Friends
@@ -108,9 +134,9 @@ const char *Bank::NotEnoughBalanceException::what() const throw() {
 // 			p_os << *it << std::endl;
 // 		return (p_os);
 // }
-const float &Bank::operator[](float id) {
+const float &Bank::operator[](int id) {
 	try {
-		if ( id <= 0)
+		if ( id < 0)
 			throw NegativeValueException();
 		return (_clientAccounts[id].getValue());
 	}
@@ -119,4 +145,5 @@ const float &Bank::operator[](float id) {
 		std::cout << "HERE";
 		throw e.what();
 	}
+	throw AccountDoesNotExistException();
 }
