@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Module00.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -186,8 +186,8 @@
   "active": "66bdea416262832b",
   "lastOpenFiles": [
     "Encapsulation.md",
-    "Module00.md",
     "MAIN.md",
+    "Module00.md",
     "Module00 - [[Encapsulation.md",
     "Welcome.md"
   ]

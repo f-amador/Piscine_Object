@@ -13,6 +13,7 @@ class Vect2
 
         const std::pair<float, float> &getCoordinate() const;
     
+        bool operator==(const Vect2 &other);
         friend  std::ostream &operator<<( std::ostream &out, const Vect2 &obj);
 };
 

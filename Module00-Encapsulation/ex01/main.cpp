@@ -19,7 +19,9 @@ int main(void)
         std::getline(std::cin, input);
         if (input == "1")
             graph.parse_input();
-        if (input == "2")
+        if (input == "2") {
+            std::cout << graph;
             break;
+        }
     }
 }
