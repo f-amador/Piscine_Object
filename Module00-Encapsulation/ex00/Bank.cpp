@@ -88,7 +88,7 @@ void Bank::setClient(float initial_balance)
 }
 // Getters
 
-const float &Bank::getLiquidity() {
+ float &Bank::getLiquidity() {
 	return _liquidity;
 }
 

@@ -43,7 +43,7 @@ class Bank {
         void transfer(int src, int dest, float ammount);
     //  Setters
     //  Getters
-        const float &getLiquidity();
+         float &getLiquidity();
         const std::vector<Account> &getClients();
         Account &getAccount(int id);
 

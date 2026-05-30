@@ -20,7 +20,7 @@ class Graph {
         ~Graph();
         
         void parse_input();
-    friend std::ostream &operator<<(std::ostream &out, const Graph &obj);
-};
-
+        friend std::ostream &operator<<(std::ostream &out, const Graph &obj);
+    };
+    
 #endif
