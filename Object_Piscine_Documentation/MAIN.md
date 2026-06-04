@@ -9,7 +9,7 @@ The following modules must be validated in this order:
 
 - [[Module00]] - [[Encapsulation]] - Encapsulation This module will introduce you to the concept of encapsulation.
 
--  Module 01 - Relationship This module will introduce you to how variables/attributes can be linked together, using specific kind of relationship.
+-  [[Module01]] - Relationship This module will introduce you to how variables/attributes can be linked together, using specific kind of relationship.
 
 - Module 02 - UML This module will introduce you to a way to represent graphicaly software architecture. 
 
