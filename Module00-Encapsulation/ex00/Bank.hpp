@@ -42,6 +42,7 @@ class Bank {
         void createAccount(float);
         void transfer(int src, int dest, float ammount);
         void deleteAccount(int id);
+        void loanMoney(int id, float ammount);
     //  Setters
     //  Getters
          float &getLiquidity();
