@@ -1,6 +1,7 @@
 #ifndef POSITION_HPP
 # define POSITION_HPP
-# include 
+
+# include <iostream>
 
 struct Position {
     int x;

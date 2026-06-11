@@ -21,7 +21,6 @@ int main(void)
             graph.parse_input();
         if (input == "2") {
             std::cout << graph;
-            std::system("clear");
             break;
         }
     }

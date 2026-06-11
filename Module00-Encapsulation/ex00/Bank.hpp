@@ -3,8 +3,9 @@
 
 #include <exception>
 #include <iostream>
-#include <vector>
+#include <map>
 #include <algorithm>
+#include <ctime>
 
 
 class Bank {
@@ -13,21 +14,20 @@ class Bank {
         class Account {
             private:
             //Attributes
-                float _id;
                 float _value;
-                public:
+                
+            public:
+                //Constructors    
                 Account();
                 Account(float);
                 ~Account();
-                //  Constructors    
-            //Getters
-                const float &getId(void) const;
+                //Getters
                 const float &getValue(void) const;
                 void setValue(float);
         };
         
         float _liquidity;
-        std::vector<Account> _clientAccounts;
+        std::map<int ,Account> _clientAccounts;
         
         // Member functions
         void setLiquidity(float);
@@ -41,18 +41,14 @@ class Bank {
     
         void createAccount(float);
         void transfer(int src, int dest, float ammount);
+        void deleteAccount(int id);
     //  Setters
     //  Getters
          float &getLiquidity();
-        const std::vector<Account> &getClients();
-        Account &getAccount(int id);
+        const std::map<int, Account> &getClients();
 
     //  Exception
-        class DuplicateIdException : public std::exception {
-            public:
-                virtual const char * what() const throw();
-        };
-
+       
         class NegativeValueException : public std::exception {
             public:
                 virtual const char * what() const throw();
@@ -68,12 +64,17 @@ class Bank {
                 virtual const char * what() const throw();
         };
 
-        const float &operator[](int);
-
-    
-        
-        //  Friends
-            // friend std::ostream &operator<<(std::ostream& , const Bank& );
+        class NoAccountsInBank : public std::exception {
+            public:
+                virtual const char * what() const throw();
         };
+
+        class BankIsFull : public std::exception {
+            public:
+                virtual const char * what() const throw();
+        };
+
+        const float &operator[](int);
+};
 
 #endif
